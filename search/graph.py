@@ -21,7 +21,27 @@ class Graph:
         * If there is an end node input and a path does not exist, return None
 
         """
-        return
+        if start not in list(self.graph):
+            return None
+        q = []
+        visited = []
+        q.append(start)
+        visited.append(start)
+        while len(q) > 0:
+            v = q.pop(0)
+            N = self.graph[v]
+            for w in N:
+                if w not in visited:
+                    visited.append(w)
+                    q.append(w)
+        if end == None:
+            return visited
+        elif end not in visited:
+            return None
+        else:
+            return visited[:x.index(end)+1]
+    def get_nodes(self):
+        return list(self.graph)
 
 
 
