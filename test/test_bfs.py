@@ -33,4 +33,4 @@ def test_bfs():
     print(len(G.bfs("34916529")))
     print(G.bfs("34916529"))
     assert G.bfs("34916529", end = "34858697") is None
-    assert 1 == 1
+    
