@@ -50,8 +50,15 @@ class Graph:
             path.reverse() # "path" is currently from "end" to "start", so we should reverse it.
             return path
     def get_nodes(self):
+        """
+        This method returns a list of all the nodes present in the Graph object, computed by NetworkX.
+        """
         return list(self.graph)
     def get_all_possible_shortest_paths_nx(self, source, target):
+        """
+        This method returns the "ground truth" shortest path traversals, computed by NetworkX.
+        There may be multiple possible shortest paths, so this method returns a list of lists (a list of shortest path lists)
+        """
         return list(nx.all_shortest_paths(self.graph, source = source, target = target))
 
 

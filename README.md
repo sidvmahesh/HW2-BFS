@@ -1,6 +1,16 @@
 # Assignment 2
 Breadth-first search
 
+# Methods Implemented
+
+In search/graph.py:
+* bfs(self, start, end=None): Computes the BFS traversal from the given start node. Returns the following:
+	* If there's no end node input, return a list nodes with the order of BFS traversal
+	* If there is an end node input and a path exists, return a list of nodes with the order of the shortest path
+	* If there is an end node input and a path does not exist, return None
+* get_nodes(self): Returns a list of all the nodes present in the Graph object, computed by NetworkX.
+* get_all_possible_shortest_paths_nx(self, source, target): This method returns the "ground truth" shortest path traversals, computed by NetworkX. There may be multiple possible shortest paths, so this method returns a list of lists (a list of shortest path lists)
+
 # Assignment Overview
 The purpose of this assignment is to get you comfortable working with graph structures and to implement a breadth-first search function to traverse the graph and find the shortest path between nodes.
 
