@@ -51,6 +51,8 @@ class Graph:
             return path
     def get_nodes(self):
         return list(self.graph)
+    def get_all_possible_shortest_paths_nx(self, source, target):
+        return list(nx.all_shortest_paths(self.graph, source = source, target = target))
 
 
 

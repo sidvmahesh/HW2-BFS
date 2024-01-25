@@ -29,8 +29,12 @@ def test_bfs():
     which should return None. 
     """
     G = Graph(filename = "data/citation_network.adjlist")
-    print(len(G.get_nodes())) # Get all the nodes in the full citation network graph
-    print(len(G.bfs("34916529"))) # This is the first node in the node list printed in the previous line
-    print(G.bfs("34916529")) # There is only one neighbor for the aforementioned node, so we know that not all nodes are reachable from this node
-    assert G.bfs("34916529", end = "34858697") is None # Ensure that "34858697" (which is a random node that shouldn't be part of "34916529"'s network, is not reached (i.e. "None is returned"))
+    #print(len(G.get_nodes())) # Get all the nodes in the full citation network graph
+    #print(G.bfs("Franklin Huang", "David Quigley")) # This is the first node in the node list printed in the previous line
+    #print(G.get_all_possible_shortest_paths_nx("Franklin Huang", "David Quigley"))
+    #print(G.bfs("David Quigley", "Franklin Huang"))
+    assert len(G.get_nodes()) == 5210
+    assert G.bfs("Franklin Huang", "David Quigley") in G.get_all_possible_shortest_paths_nx("Franklin Huang", "David Quigley")
+    assert G.bfs("Franklin Huang", "David Quigley") != G.bfs("David Quigley", "Franklin Huang")
+    assert G.bfs("Franklin Huang", end = "PI_that_doesnt_exist") is None # Ensure that "PI_that_doesnt_exist" (which is a random node that shouldn't be part of "Franklin Huang"'s network, is not reached (i.e. "None is returned"))
     
