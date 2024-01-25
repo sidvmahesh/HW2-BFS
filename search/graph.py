@@ -22,24 +22,33 @@ class Graph:
 
         """
         if start not in list(self.graph):
-            return None
-        q = []
-        visited = []
+            return None # Handles edge case of start not being in the graph
+        q = [] # A queue to maintain the order of nodes to be visited.
+        visited = [] # Nodes visited (ordered inherently due to this being a list, but doesn't have to be)
+        parent = {start: None} # Keeps track of the parent of each node (None for the root). This will help back-trace from "end" to "start" to find the shortest path
         q.append(start)
         visited.append(start)
-        while len(q) > 0:
-            v = q.pop(0)
+        while len(q) > 0: # While there are 1+ nodes to be visited:
+            v = q.pop(0) # First node to be visited
             N = self.graph[v]
             for w in N:
                 if w not in visited:
                     visited.append(w)
                     q.append(w)
+                    parent[w] = v
         if end == None:
             return visited
         elif end not in visited:
             return None
         else:
-            return visited[:x.index(end)+1]
+            # Trace back our steps from end to start using "parent"
+            path = []
+            current = end
+            while current is not None:
+                path.append(current)
+                current = parent[current]
+            path.reverse() # "path" is currently from "end" to "start", so we should reverse it.
+            return path
     def get_nodes(self):
         return list(self.graph)
 
